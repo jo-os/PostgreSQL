@@ -37,6 +37,8 @@ echo -n '<password>' | md5sum
 ```
 /etc/pgbouncer/userlist.txt
 ```
+“<username>” “<password>”
+or
 “<username>” “md5<password>”
 ```
 ```
