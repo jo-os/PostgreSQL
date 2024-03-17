@@ -1,3 +1,4 @@
+**Install pgbouncer**
 ```
 sudo apt-get -y install pgbouncer
 ```
@@ -40,6 +41,7 @@ echo -n '<password>' | md5sum
 ```
 ```
 systemctl enable --now pgbouncer
+systemctl restart pgbouncer
 ```
 ```
 pgbench -p 5432 -i -U test -h localhost test_db
