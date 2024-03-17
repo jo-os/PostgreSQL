@@ -31,11 +31,9 @@ wal_keep_size = 1GB
 ```
 vi /var/lib/pgsql/14/data/pg_hba.conf
 
-host all repmgr 192.168.1.155/32 scram-sha-256
-host all repmgr 192.168.1.156/32 scram-sha-256
+host all repmgr 192.168.1.0/24 scram-sha-256
 
-host replication repmgr 192.168.1.155/32 md5
-host replication repmgr 192.168.1.156/32 md5
+host replication repmgr 192.168.1.0/24 md5
 ```
 On master
 ```
