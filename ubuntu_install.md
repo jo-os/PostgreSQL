@@ -8,7 +8,7 @@ curl -fSsL https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor | 
 echo deb [arch=amd64,arm64,ppc64el signed-by=/usr/share/keyrings/postgresql.gpg] http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main | sudo tee /etc/apt/sources.list.d/postgresql.list
 
 sudo apt update
-sudo apt install postgresql-client-15 postgresql-15
+sudo apt install postgresql-client-16 postgresql-16
 systemctl status postgresql
 sudo systemctl enable postgresql --now
 ```
