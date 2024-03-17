@@ -25,29 +25,28 @@ max_client_conn = 1000 # change for test
 default_pool_size = 20
 ```
 ```
-su postgres
-createuser test -P
+su - postgres
+ALTER SYSTEM SET max_connections = 500;
+ALTER SYSTEM SET shared_buffers = '512MB';
+
+createuser -P test
+createdb test_db -O test
+
 echo -n '<password>' | md5sum
 ```
 /etc/pgbouncer/userlist.txt
 ```
 “<username>” “md5<password>”
 ```
-nano /etc/postgresql/16/main/pg_hba.conf
-
-local   all             postgres                                md5
 ```
-create database test_db;
-GRANT ALL PRIVILEGES ON DATABASE test_db TO test;
-GRANT ALL ON SCHEMA public TO test;
+systemctl enable --now pgbouncer
 ```
 ```
 pgbench -p 5432 -i -U test -h localhost test_db
+
+pgbench -p 5432 -c 100 -j 16 -T 60 -U test -h localhost test_db
+ps aux | grep test | cat -b
+
+pgbench -p 6432 -c 100 -j 16 -T 60 -U test -h localhost test_db
+ps aux | grep test | cat -b
 ```
-
-
-
-
-
-
-
