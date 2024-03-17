@@ -77,6 +77,36 @@ sudo systemctl restart etcd
 ```
 sudo etcdctl member list
 ```
+### Watchdog
+```
+sudo sh -c 'echo "softdog" >> /etc/modules'
+sudo sh -c 'echo "KERNEL=="watchdog", OWNER="postgres", GROUP="postgres"" >> /etc/udev/rules.d/61-watchdog.rules'
+```
+Проверяем и удаляем все что находим
+```
+grep blacklist /lib/modprobe.d/* /etc/modprobe.d/* |grep softdog
+```
+Перезапускаем ВМ и проверяем
+```
+lsmod | grep softdog
+```
+### PostgreSQL
+```
+sudo apt-get update -y; sudo apt-get install -y wget gnupg2 lsb-release curl
+wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
+sudo dpkg -i percona-release_latest.generic_all.deb
+sudo apt-get update
+sudo percona-release setup ppg-15
+sudo apt-get install percona-postgresql-12
+```
+
+```
+sudo systemctl disable postgresql
+```
+```
+sudo systemctl stop postgresql
+sudo rm -fr /var/lib/postgresql/15/main
+```
 
 
 
