@@ -1,0 +1,48 @@
+```
+sudo apt-get -y install pgbouncer
+```
+/etc/pgbouncer/pgbouncer.ini
+```
+[databases]
+
+* = host=localhost port=5432 # change
+
+[pgbouncer]
+
+logfile = /var/log/postgresql/pgbouncer.log
+pidfile = /var/run/postgresql/pgbouncer.pid
+
+listen_addr = * # change
+listen_port = 6432
+
+unix_socket_dir = /var/run/postgresql
+
+auth_type = md5
+auth_file = /etc/pgbouncer/userlist.txt
+
+max_client_conn = 500 # change for test
+```
+```
+su postgres
+createuser test -P
+echo -n '<password>' | md5sum
+```
+/etc/pgbouncer/userlist.txt
+```
+“<username>” “md5<password>”
+```
+```
+create database test_db;
+GRANT ALL PRIVILEGES ON DATABASE test_db TO test;
+GRANT ALL ON SCHEMA public TO test;
+```
+```
+pgbench -p 5432 -i -U test -h localhost test_db
+```
+
+
+
+
+
+
+
