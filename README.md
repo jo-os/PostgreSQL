@@ -39,6 +39,9 @@ host replication repmgr 192.168.1.156/32 md5
 ```
 On master
 ```
+su postgres
+psql
+
 CREATE USER repmgr WITH ENCRYPTED PASSWORD 'repl123!7a';
 CREATE DATABASE repmgr OWNER repmgr;
 ALTER USER repmgr WITH SUPERUSER;
@@ -100,14 +103,23 @@ service_reload_command = 'sudo systemctl reload postgresql-14'
 
 sudo -u postgres /usr/pgsql-14/bin/repmgr -h 192.168.1.155 -U repmgr -d repmgr -f /etc/repmgr/14/repmgr.conf standby clone --dry-run
 sudo -u postgres /usr/pgsql-14/bin/repmgr -h 192.168.1.155 -U repmgr -d repmgr -f /etc/repmgr/14/repmgr.conf standby clone
-vi /var/lib/pgsql/14/data/pg_hba.conf
+
 systemctl enable --now postgresql-14
 sudo -u postgres /usr/pgsql-14/bin/repmgr -f /etc/repmgr/14/repmgr.conf standby register
 ```
 Create database and check replication
 ```
 CREATE DATABASE TEST1;
+\l
+\c test1;
+\dt
 ```
+
+
+
+
+switchover
+
 On Both
 ```
 Defaults:postgres !requiretty
