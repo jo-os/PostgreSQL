@@ -98,7 +98,7 @@ wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
 sudo dpkg -i percona-release_latest.generic_all.deb
 sudo apt-get update
 sudo percona-release setup ppg-15
-sudo apt-get install percona-postgresql-12
+sudo apt-get install percona-postgresql-15
 ```
 Запуск и инициализацию будет осуществлять через patroni, поэтому отключаем и удаляем
 ```
