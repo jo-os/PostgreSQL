@@ -262,7 +262,12 @@ echo "localhost:5000:postgres:postgres:vagrant" > ~/.pgpass
 echo "localhost:5001:postgres:postgres:vagrant" >> ~/.pgpass
 chmod 0600 ~/.pgpass
 ```
-
-
-
-
+На чтение (roundrobin)
+```
+psql -Upostgres -hlocalhost -p5001 -t -c "select inet_server_addr()"
+```
+На запись (only leader)
+```
+psql -Upostgres -hlocalhost -p5000 -t -c "select inet_server_addr()"
+```
+HAProxy Status - http://ip-haproxy:7000/
