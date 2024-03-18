@@ -175,8 +175,8 @@ bootstrap:
 postgresql:
   listen: 0.0.0.0:5432
   connect_address: node1:5432
-  data_dir: "/var/lib/postgresql/12/main"
-  bin_dir: "/usr/lib/postgresql/12/bin"
+  data_dir: "/var/lib/postgresql/15/main"
+  bin_dir: "/usr/lib/postgresql/15/bin"
 #  config_dir:
   pgpass: /tmp/pgpass0
   authentication:
