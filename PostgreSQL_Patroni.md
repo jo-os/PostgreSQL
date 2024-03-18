@@ -211,7 +211,7 @@ psql -U postgres
 
 Проверяем
 ```
-sudo patronictl -c /etc/patroni/config.yml list
+sudo patronictl -c /etc/patroni/patroni.yml list
 ```
 ### HAProxy
 ```
