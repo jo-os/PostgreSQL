@@ -106,7 +106,7 @@ sudo systemctl disable postgresql
 ```
 ```
 sudo systemctl stop postgresql
-sudo rm -fr /var/lib/postgresql/15/main
+sudo rm -rf /var/lib/postgresql/15/main
 ```
 ### Patroni
 ```
