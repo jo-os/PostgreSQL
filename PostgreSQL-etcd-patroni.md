@@ -271,3 +271,9 @@ psql -Upostgres -hlocalhost -p5001 -t -c "select inet_server_addr()"
 psql -Upostgres -hlocalhost -p5000 -t -c "select inet_server_addr()"
 ```
 HAProxy Status - http://ip-haproxy:7000/
+
+Example DB
+
+https://www.postgresqltutorial.com/postgresql-getting-started/postgresql-sample-database/
+
+https://www.postgresqltutorial.com/postgresql-getting-started/load-postgresql-sample-database/
